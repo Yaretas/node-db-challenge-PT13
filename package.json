@@ -1,0 +1,29 @@
+{
+  "name": "node-db-challenge-PT13",
+  "version": "1.0.0",
+  "description": "Show mastery on Data Persistance section",
+  "main": "index.js",
+  "scripts": {
+    "server": "index.js nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yaretas/node-db-challenge-PT13.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yaretas/node-db-challenge-PT13/issues"
+  },
+  "homepage": "https://github.com/Yaretas/node-db-challenge-PT13#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "knex": "^0.21.1",
+    "sqlite3": "^4.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
