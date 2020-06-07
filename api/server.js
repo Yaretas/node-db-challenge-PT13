@@ -1,8 +1,8 @@
 const express = require("express");
 
-const projectsRouter = require("../data/Routes/projectsRouter.js");
-const resourcesRouter = require("../data/Routes/resourceRouter.js");
-const tasksRouter = require("../data/Routes/taskRouter.js");
+const projectRouter = require("../data/routers/projectsRouter.js");
+const resourcesRouter = require("../data/routers/resourseRouter.js");
+const tasksRouter = require("../data/routers/taskRouter.js");
 
 const server = express();
 server.use(express.json());
@@ -13,7 +13,7 @@ server.get("/", (req, res) => {
   });
 });
 
-server.use("/api/projects", projectsRouter);
+server.use("/api/projects", projectRouter);
 server.use("/api/resources", resourcesRouter);
 server.use("/api/tasks", tasksRouter);
 

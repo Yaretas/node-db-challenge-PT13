@@ -1,12 +1,14 @@
 const express = require("express");
 //import helpers database
-const project = require("../data/Routes/projectsModal.js");
+const db = require('../dbConfig')
+const project = require("./projectsModal.js");
 
 const routerProject = express.Router();
 
 // ------------ CRUD Operations ---------------
 
 // Get or Retrieve data from Projects table
+
 routerProject.get("/", (req, res) => {
   project.findProjects()
     .then(project => {
@@ -20,7 +22,7 @@ routerProject.get("/", (req, res) => {
     })
 });
 // ADD data from projects table
-routerProject.add("/", (req, res) => {
+routerProject.put("/", (req, res) => {
   const {
     name,
     description

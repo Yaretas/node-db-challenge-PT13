@@ -1,6 +1,6 @@
 const express = require('express');
 
-const resource = require('../data/Routes/resourceModal.js');
+const resource = require('./resourceModal.js');
 
 const routerResource = express.Router();
 
