@@ -12,18 +12,17 @@ function findProjects() {
 }
 
 function findProjectsById(id) {
-  return db("projects")
-    .where({
-      id,
-    })
-    .first();
+  return db('projects').where({
+    id
+  }).first();
 }
 
 function addProjects(project) {
-  db("projects")
+  return db('projects')
     .insert(project)
-    .then((id) => {
-      return findProjectsById(id[0]);
+    .then((ids) => {
+      const [id] = ids;
+      return findProjectsById(id);
     });
 }
 

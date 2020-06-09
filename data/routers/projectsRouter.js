@@ -1,7 +1,7 @@
 const express = require("express");
 //import helpers database
-const db = require('../dbConfig')
-const project = require("./projectsModal.js");
+
+const project = require("../routers/projectsModal");
 
 const routerProject = express.Router();
 
@@ -22,29 +22,28 @@ routerProject.get("/", (req, res) => {
     })
 });
 // ADD data from projects table
-routerProject.put("/", (req, res) => {
-  const {
-    name,
-    description
-  } = req.body;
-
-  if (!name || !description) {
+routerProject.post('/', (req, res) => {
+  const projectData = req.body;
+  if (!projectData.Name || !projectData.Description) {
     res.status(400).json({
-      errorMessage: "Please provide name / description / completed in order to continue"
+      errorMessage: 'Please provide name / description / completed in order to continue',
     });
   } else {
-    project.insert(name, description)
-      .then(newProject => {
+    project
+      .addProjects(projectData)
+      .then((newProject) => {
         res.status(201).json(newProject);
       })
-      .catch(err => {
-        res.status(500).json({
-          errMessage: "Error while saving Project to database :( "
-        });
-      })
+      .catch((err) => {
+        res
+          .status(500)
+          .json({
+            errMessage: 'Error while saving Project to database :( '
+          });
+      });
   }
-
 });
+
 
 //Export Router
 module.exports = routerProject;
