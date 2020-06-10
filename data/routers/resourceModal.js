@@ -19,8 +19,9 @@ function findResourceById(id) {
 
 function addResource(resources) {
     db('resource').insert(resources)
-        .then(id => {
-            return findResourceById(id[0]);
+        .then((ids) => {
+            const [id] = ids;
+            return findResourceById(ids);
         })
 }
 

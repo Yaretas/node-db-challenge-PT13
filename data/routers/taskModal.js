@@ -19,8 +19,9 @@ function findTaskById(id) {
 
 function addTask(tasks) {
     db('task').insert(tasks)
-        .then(id => {
-            return findTaskById(id[0]);
+        .then((ids) => {
+            const [id] = ids;
+            return findTaskById(ids);
         })
 }
 

@@ -21,7 +21,9 @@ routerProject.get("/", (req, res) => {
       })
     })
 });
-// ADD data from projects table
+
+// ADD data from projects table ---------
+
 routerProject.post('/', (req, res) => {
   const projectData = req.body;
   if (!projectData.Name || !projectData.Description) {
@@ -43,6 +45,32 @@ routerProject.post('/', (req, res) => {
       });
   }
 });
+
+//Delete Projects -------
+
+routerProject.put('/:id', (req, res) => {
+  const {
+    id
+  } = req.params;
+
+  project.deleteProjects(id)
+    .then(deleted => {
+      if (deleted) {
+        res.status(204).json({
+          message: "Project was removed by user"
+        });
+      } else {
+        res.status(404).json({
+          message: "Project was not found"
+        });
+      }
+    })
+    .catch(err => {
+      res.status(501).json({
+        errMessage: "Houston, we have a problem! Action"
+      });
+    })
+})
 
 
 //Export Router
